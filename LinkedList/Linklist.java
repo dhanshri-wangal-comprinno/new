@@ -84,7 +84,7 @@ Linklist(){
 			secondLast = secondLast.next;		}
 	}
 
-	secondLAST.NEXT = null;
+	secondLast.next = null;
 }
 
 public static void main(String args[]){
