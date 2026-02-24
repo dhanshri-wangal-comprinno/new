@@ -1,93 +1,108 @@
-class Linklist{
-	Node head;
-	private int size;
+class Linklist {
+    Node head;
+    private int size;
 
-Linklist(){
-      this.size = 0;
-	}
+    Linklist() {
+        this.size = 0;
+    }
 
-	class Node{
-		String data;
-		Node next;
+    class Node {
+        String data;
+        Node next;
 
-		Node(String data){
-			this.data = data;
-			this.next = null;
-             size++;
-		}
-	}
+        Node(String data) {
+            this.data = data;
+            this.next = null;
+            size++;
+        }
+    }
 
-	//adding first and last element
-	public void addFirst(String data){
-		Node newNode = new Node(data);
-		if(head==null){
-			head = newNode;
-			return;
-		}
+    // Add First
+    public void addFirst(String data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
 
-		newNode.next = head;
-		head = newNode;
-	}
+        newNode.next = head;
+        head = newNode;
+    }
 
-	public void addLast(string data){
-		Node newNode = new Node(data);
-		if(head == null){
-			head = newNode;
-			return;
-		}
+    // Add Last
+    public void addLast(String data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
 
-		Node currNode = head;
-		while(currNode.next != null){
-			currNode = currNode.next;
-		}
+        Node currNode = head;
+        while (currNode.next != null) {
+            currNode = currNode.next;
+        }
 
-		currNode.next = newNode;
-	}
+        currNode.next = newNode;
+    }
 
-	public void printList(){
-		if(head==null){
-			System.out.println("list is empty");
-			return;
-		}
+    // Print List
+    public void printList() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
 
-		Node currNOde = head;
-		while(currNode!=null){
-			System.out.print(CurrNode.data+"->");
-			currNode = currNode.next;
-		}
+        Node currNode = head;
+        while (currNode != null) {
+            System.out.print(currNode.data + " -> ");
+            currNode = currNode.next;
+        }
 
-		System.out.println("NULL");
-	}
+        System.out.println("NULL");
+    }
 
-	public void deleteFirst(){
-		if(head==null){
-			System.out.println("this list is empty");
-			return;
-		}
-		size--;
-		head = head.next;
-	}
-	public void deleteLast(){
-		if(head == null){
-			System.out.println("This list is empty");
-			return;
-		}
-		if(head.next == null){
-			head =null;
-			return;
-		}
+    // Delete First
+    public void deleteFirst() {
+        if (head == null) {
+            System.out.println("This list is empty");
+            return;
+        }
+        size--;
+        head = head.next;
+    }
 
-		Node secondLast = head;
-		Node lastNode = head.next;
-		while(lastNode.next != null){
-			lastNode = lastNode.next;
-			secondLast = secondLast.next;		}
-	}
+    // Delete Last
+    public void deleteLast() {
+        if (head == null) {
+            System.out.println("This list is empty");
+            return;
+        }
 
-	secondLast.next = null;
-}
+        if (head.next == null) {
+            head = null;
+            size--;
+            return;
+        }
 
-public static void main(String args[]){
-	Linklist list = new Linklist();
-	list.addFirst("a");
+        Node secondLast = head;
+        Node lastNode = head.next;
+
+        while (lastNode.next != null) {
+            lastNode = lastNode.next;
+            secondLast = secondLast.next;
+        }
+
+        secondLast.next = null;
+        size--;
+    }
+
+    public static void main(String args[]) {
+        Linklist list = new Linklist();
+        list.addFirst("a");
+        list.addLast("c");
+        list.printList();
+        list.deleteFirst();
+        list.deleteLast();
+        list.printList();
+    }
 }
